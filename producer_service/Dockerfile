@@ -1,0 +1,13 @@
+FROM scratch
+
+ENV PRODUCER_HOST=0.0.0.0
+ENV PRODUCER_PORT=8080
+
+ENV CREATOR_HOST=0.0.0.0
+ENV CREATOR_PORT=8081
+
+EXPOSE ${PRODUCER_PORT}
+
+ADD producer_service /producer_service
+
+CMD ["/producer_service"]

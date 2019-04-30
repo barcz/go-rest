@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: create-json
+spec:
+  selector:
+    matchLabels:
+      app: create-json
+  template:
+    metadata:
+      labels:
+        app: create-json
+        version: "1.0"
+    spec:
+      containers:
+      - name: create-json
+        image: barcz/create:1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        env:
+          - name: CREATOR_HOST
+            value: "0.0.0.0"
+          - name: CREATOR_PORT
+            value: "8081"
+        ports:
+        - containerPort: 8081
+          name: http
